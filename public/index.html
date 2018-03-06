@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>CoinFlip</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript" src="js/jquery.js">  </script>
+
+</head>
+<body>
+  <div id="wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1>Coin Flip</h1>
+        </div>
+        <div class="col-lg-12">
+          <div class="col-lg-4"></div>
+          <!-- Coin -->
+          <div class="col-lg-4">
+            <div class="coinBox">
+              <div class="head">
+                <img src="images/head.png" />
+              </div>
+              <div class="tail">
+                <img src="images/tail.png" />
+              </div>
+            </div>
+          </div>
+          <!-- User Form -->
+          <div class="col-lg-4">
+            <form>
+              <p>
+                <select class="form-control" id="userChoice">
+                  <option value="">Select your side</option>
+                  <option value="head">Head</option>
+                  <option value="tail">Tail</option>
+                </select>
+              </p>
+              <p>
+                <button class="btn btn-lg btn-primary" id="btnFlip" disabled>Flip</button>
+              </p>
+              </p>
+            </form>
+          </div>
+         </div>
+       </div>
+     </div>
+   </div>
+</body>
+<script type="text/javascript"  >
+$(document).on('change',"#userChoice",function(){
+  var userchoice=$(this).val();
+  if(userchoice==""){
+    alert("Please select head or tails");
+    $('#btnFlip').attr('disabled','disabled');
+  }else{
+    $('#btnFlip').removeAttr('disabled');
+  }
+});
+
+//
+$(document).on('click',"#btnFlip",function(){
+  var flipper=$('.coinBox>div').addClass('flip');
+  setTimeout(function(){
+    flipper.removeClass('flip');
+  },2000);
+  return false;
+});
+</script>
+</html>
